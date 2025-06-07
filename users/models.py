@@ -11,7 +11,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     telefone = models.CharField(max_length=20)
-    cpf = models.CharField(max_length=14, unique=True)  # XXX.XXX.XXX-XX
+    # cpf = models.CharField(max_length=14, unique=True)  # XXX.XXX.XXX-XX
     tipo_funcionario = models.CharField(max_length=30, choices=TIPO_FUNCIONARIO_CHOICES)
 
     def __str__(self):
