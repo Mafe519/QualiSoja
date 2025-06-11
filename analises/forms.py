@@ -1,6 +1,6 @@
 import datetime
 from django import forms
-from .models import AnaliseUmidade, AnaliseProteina, AnaliseOleoDegomado
+from .models import AnaliseUmidade, AnaliseProteina, AnaliseUmidadeOleoDegomado
 from django.utils import timezone  # Use o timezone do Django, não o datetime padrão
 
 class AnaliseUmidadeForm(forms.ModelForm):
@@ -54,31 +54,27 @@ class AnaliseProteinaForm(forms.ModelForm):
         
         return cleaned_data
 
-class AnaliseOleoDegomadoForm(forms.ModelForm):
+
+
+class AnaliseUmidadeOleoDegomadoForm(forms.ModelForm):
     """
-    Formulário para cadastro e edição de análises de óleo degomado.
+    Formulário para cadastro e edição de análises Oleo degomado.
     """
     class Meta:
-        model = AnaliseOleoDegomado
+        model = AnaliseUmidadeOleoDegomado
         fields = '__all__'
         widgets = {
             'data': forms.DateInput(attrs={'type': 'date'}),
             'horario': forms.TimeInput(attrs={'type': 'time'}),
-            'observacoes': forms.Textarea(attrs={'rows': 3}),
         }
-    
+
     def clean(self):
-        """Validação específica do formulário de óleo degomado"""
+        """Validação específica do formulário de Oleo Degomado"""
         cleaned_data = super().clean()
         
         # Verificar se resultado está dentro de limites razoáveis
         resultado = cleaned_data.get('resultado')
         if resultado is not None and (resultado < 0 or resultado > 100):
             self.add_error('resultado', 'O valor do resultado deve estar entre 0% e 100%.')
-        
-        # Verificar acidez
-        acidez = cleaned_data.get('acidez')
-        if acidez is not None and acidez < 0:
-            self.add_error('acidez', 'A acidez não pode ser negativa.')
         
         return cleaned_data

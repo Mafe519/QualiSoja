@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'users',
     'relatorios',
     'widget_tweaks',
-    'analise_oleo_degomado'
+    
 ]
 
 MIDDLEWARE = [

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import home, home_simple
 
+
 # Importar view de debug
 try:
     from debug_views import debug_dashboard_data
@@ -22,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/',include('users.urls', namespace='users')),
     path('analises/',include('analises.urls', namespace='analises')),
-    path('relatorios/',include('relatorios.urls', namespace='relatorios'))
+    path('relatorios/',include('relatorios.urls', namespace='relatorios')),
+ 
 ]
 
 # Adicionar URL de teste CSRF se disponível

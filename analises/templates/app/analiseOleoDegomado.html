@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-success bg-opacity-10 border-success border-opacity-25">
+        <h2 class="mb-0 text-success">
+            <i class="bi bi-flask-fill me-2"></i>Nova Análise de Proteína
+        </h2>
+    </div>
+    <div class="card-body">
+        <form method="post" class="needs-validation" novalidate>
+             {{ form.data|add_class:"form-control" }}
+                                        <label for="{{ form.data.id_for_label }}">{{ form.data.label }}</label>
+                                        {% if form.data.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.data.errors }}</div>
+                                        {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

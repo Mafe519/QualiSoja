@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.db.models import Count, Avg, Min, Max, StdDev
 from django.db.models.functions import Extract
-from analises.models import AnaliseUmidade, AnaliseProteina, AnaliseOleoDegomado
+from analises.models import AnaliseUmidade, AnaliseProteina, AnaliseUmidadeOleoDegomado
 
 def convert_decimal_to_float(stats_dict):
     """Converte valores Decimal para float em um dicionário de estatísticas"""
@@ -28,7 +28,7 @@ def home(request):
     # Buscar análises de hoje
     analises_umidade_hoje = AnaliseUmidade.objects.filter(data=hoje).order_by('-horario')
     analises_proteina_hoje = AnaliseProteina.objects.filter(data=hoje).order_by('-horario')
-    analises_oleo_hoje = AnaliseOleoDegomado.objects.filter(data=hoje).order_by('-horario')
+    analises_oleo_hoje = AnaliseUmidadeOleoDegomado.objects.filter(data=hoje).order_by('-horario')
     
     # Calcular estatísticas do dia
     total_analises_hoje = analises_umidade_hoje.count() + analises_proteina_hoje.count() + analises_oleo_hoje.count()
@@ -82,7 +82,7 @@ def home(request):
     total_30_dias = (
         AnaliseUmidade.objects.filter(data__gte=data_30_dias).count() +
         AnaliseProteina.objects.filter(data__gte=data_30_dias).count() +
-        AnaliseOleoDegomado.objects.filter(data__gte=data_30_dias).count()
+        AnaliseUmidadeOleoDegomado.objects.filter(data__gte=data_30_dias).count()
     )
     
     context = {

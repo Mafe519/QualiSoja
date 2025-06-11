@@ -15,7 +15,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 
 # Importar models e forms do app analises
-from analises.models import AnaliseUmidade, AnaliseProteina, AnaliseOleoDegomado
+from analises.models import AnaliseUmidade, AnaliseProteina, AnaliseUmidadeOleoDegomado
 from .forms import RelatorioFiltroForm
 
 
@@ -268,7 +268,7 @@ def obter_dados_relatorio(tipo_relatorio, data_inicial, data_final, tipo_amostra
     if tipo_relatorio in ['oleo_degomado', 'completo']:
         try:
             # Consulta para análises de óleo degomado
-            queryset = AnaliseOleoDegomado.objects.filter(
+            queryset = AnaliseUmidadeOleoDegomado.objects.filter(
                 data__gte=data_inicial,
                 data__lte=data_final
             )

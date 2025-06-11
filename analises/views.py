@@ -1,7 +1,7 @@
 from django.views.generic import CreateView, ListView, TemplateView
 from django.urls import reverse_lazy
-from .models import AnaliseUmidade, AnaliseProteina, AnaliseOleoDegomado
-from .forms import AnaliseUmidadeForm, AnaliseProteinaForm, AnaliseOleoDegomadoForm
+from .models import AnaliseUmidade, AnaliseProteina, AnaliseUmidadeOleoDegomado
+from .forms import AnaliseUmidadeForm, AnaliseProteinaForm, AnaliseUmidadeOleoDegomadoForm
 
 class AnaliseHomeView(TemplateView):
     """View para a página inicial do módulo de análises"""
@@ -20,9 +20,9 @@ class ProteinaCreateView(CreateView):
     success_url = reverse_lazy('analises:proteina_list')
 
 class OleoDegomadoCreateView(CreateView):
-    model = AnaliseOleoDegomado
-    form_class = AnaliseOleoDegomadoForm
-    template_name = 'app/cadastro_oleo.html'
+    model = AnaliseUmidadeOleoDegomado
+    form_class = AnaliseUmidadeOleoDegomadoForm
+    template_name = 'app/cadastro_umidade_oleo.html'
     success_url = reverse_lazy('analises:oleo_list')
 
 class UmidadeListView(ListView):
@@ -34,5 +34,5 @@ class ProteinaListView(ListView):
     template_name = 'app/lista_proteina.html'
 
 class OleoDegomadoListView(ListView):
-    model = AnaliseOleoDegomado
-    template_name = 'app/lista_oleo.html'
+    model = AnaliseUmidadeOleoDegomado
+    template_name = 'app/lista_umidade_oleo.html'
