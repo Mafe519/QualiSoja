@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import (
+    AcidezOleoDegomadoCreateView,
+    AcidezOleoDegomadoListView,
     AnaliseHomeView,
     UmidadeCreateView, ProteinaCreateView, OleoDegomadoCreateView,
     UmidadeListView, ProteinaListView, OleoDegomadoListView
@@ -15,4 +17,6 @@ urlpatterns = [
     path('umidade/', UmidadeListView.as_view(), name='umidade_list'),
     path('proteina/', ProteinaListView.as_view(), name='proteina_list'),
     path('oleo/', OleoDegomadoListView.as_view(), name='oleo_list'),
+    path('oleoAcidez/', AcidezOleoDegomadoListView.as_view(), name='acidez_list'),
+    path('oleoAcidez/nova/', AcidezOleoDegomadoCreateView.as_view(), name='acidez_create')
 ]

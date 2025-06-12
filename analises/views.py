@@ -36,3 +36,15 @@ class ProteinaListView(ListView):
 class OleoDegomadoListView(ListView):
     model = AnaliseUmidadeOleoDegomado
     template_name = 'app/lista_umidade_oleo.html'
+
+
+class AcidezOleoDegomadoCreateView(CreateView):
+    model = AnaliseUmidadeOleoDegomado
+    form_class = AnaliseUmidadeOleoDegomadoForm
+    template_name = 'app/cadastro_oleo_acidez.html'
+    success_url = reverse_lazy('analises:acidez_list')
+
+
+class AcidezOleoDegomadoListView(ListView):
+    model = AnaliseUmidadeOleoDegomado
+    template_name = 'app/lista_acidez_oleo.html'

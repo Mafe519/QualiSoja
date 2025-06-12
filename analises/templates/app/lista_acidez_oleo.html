@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Lista de Análises Umidade de Óleo Degomado</h2>
+<h2>Lista de Análises de Acidez do Óleo Degomado</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -11,6 +11,7 @@
             <th>Tara </th>
             <th>Liquido</th>
             <th>Fator de Correção</th>
+            <th>Titulação</th>
             <th>Resultado (%)</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
             <td>{{ analise.tara }}</td>
             <td>{{ analise.liquido }}</td>
             <td>{{ analise.fator_correcao }}</td>
+            <td>{{ analise.titulacao }}</td>
             <td>{{ analise.resultado }}</td>
         </tr>
     {% empty %}

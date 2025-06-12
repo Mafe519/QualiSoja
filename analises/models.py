@@ -167,6 +167,7 @@ class AnaliseUmidadeOleoDegomado(BaseModel):
     liquido = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name="Líquido")
     peso_amostra = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Peso da Amostra")
     resultado = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name="Resultado")
+    titulacao = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name="Titulação")
     fator_correcao = models.DecimalField(
         max_digits=10, 
         decimal_places=2, 
